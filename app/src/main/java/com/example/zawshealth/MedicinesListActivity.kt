@@ -2,6 +2,7 @@ package com.example.zawshealth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ListView
 
@@ -10,16 +11,19 @@ class MedicinesListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medicines_list)
 
-        var medicines = arrayOf(
-            "paracetamol",
-            "acetaminophen",
-            "brinzolamide",
-            "timolol",
-            "acetazolamide"
-        )
+        showMedicines()
+    }
 
-        val medicineListView = findViewById<ListView>(R.id.medicines_list_container)
+    fun showMedicines() {
+        val medicineDatabase = MedicineDatabase(applicationContext)
+        var cursor = medicineDatabase.getAllMedicine()
+        var medicines = arrayOf<String>()
 
-        medicineListView.adapter = ArrayAdapter(this, R.layout.activity_medicines_list_view_item, medicines)
+        while(cursor!!.moveToNext()) {
+            medicines += (cursor.getString(2))
+        }
+
+        val medicineListContainer = findViewById<ListView>(R.id.medicines_list_container)
+        medicineListContainer.adapter = ArrayAdapter(this, R.layout.activity_medicines_list_view_item, medicines)
     }
 }
