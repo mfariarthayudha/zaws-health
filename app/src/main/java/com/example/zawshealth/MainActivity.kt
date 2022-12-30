@@ -12,11 +12,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val medicineDatabase = MedicineDatabase(applicationContext)
+        medicineDatabase.createTable()
 
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(
                 this@MainActivity,
-                MedicinesListActivity::class.java
+                InteractionChecker::class.java
             )
             startActivity(intent)
             finish()

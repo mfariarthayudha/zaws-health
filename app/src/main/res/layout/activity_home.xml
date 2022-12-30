@@ -8,7 +8,7 @@
     tools:context=".HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/navbar_container"
+        android:id="@+id/navbar"
         android:layout_width="409dp"
         android:layout_height="75dp"
         android:background="@color/white"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/navbar_logo"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="13dp"
@@ -27,7 +27,7 @@
             app:srcCompat="@drawable/logo" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/navbar_title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -36,11 +36,11 @@
             android:textColor="@color/zaws_red"
             android:textSize="20dp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/navbar_logo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/navbar_title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -49,11 +49,11 @@
             android:textColor="@color/zaws_grey"
             android:textSize="20dp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/navbar_title1"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/navbar_menu_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="20dp"
@@ -71,7 +71,7 @@
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navbar_container">
+        app:layout_constraintTop_toBottomOf="@+id/navbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
