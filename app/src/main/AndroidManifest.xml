@@ -15,7 +15,7 @@
         android:theme="@style/Theme.ZawsHealth"
         tools:targetApi="31">
         <activity
-            android:name=".InteractionChecker"
+            android:name=".InteractionCheckerActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

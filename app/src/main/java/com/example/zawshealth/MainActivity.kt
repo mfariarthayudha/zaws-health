@@ -17,10 +17,10 @@ class MainActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(
                 this@MainActivity,
-                InteractionChecker::class.java
+                HomeActivity::class.java
             )
             startActivity(intent)
             finish()
-        }, 1000)
+        }, 2000)
     }
 }

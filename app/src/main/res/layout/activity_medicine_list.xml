@@ -53,14 +53,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/navbar_menu_icon"
+            android:id="@+id/back_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/menu_icon" />
+            app:srcCompat="@drawable/back_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout

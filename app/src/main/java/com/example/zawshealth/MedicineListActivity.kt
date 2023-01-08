@@ -1,5 +1,6 @@
 package com.example.zawshealth
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -12,17 +13,24 @@ import org.json.JSONArray
 import org.json.JSONTokener
 
 class MedicineListActivity : AppCompatActivity() {
+    val serverAddress = "http://192.168.204.30:8100"
     var medicines = arrayOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medicine_list)
 
+        val backIcon = findViewById<ImageView>(R.id.back_icon)
         val medicineSearchInput = findViewById<EditText>(R.id.medicine_search_input)
         val medicineSearchButton = findViewById<Button>(R.id.medicine_search_button)
         val medicineSearchResultContainer = findViewById<CardView>(R.id.medicine_search_result_container)
         val medicineSearchResultCloseButton = findViewById<ImageView>(R.id.medicine_search_result_close_button)
         val removeAllMedicineButton = findViewById<Button>(R.id.remove_all_medicine_button)
+
+        backIcon.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
 
         medicineSearchButton.setOnClickListener {
             val searchKey = medicineSearchInput.text.toString()
@@ -56,7 +64,7 @@ class MedicineListActivity : AppCompatActivity() {
         if (this.medicines.size > 0) {
             removeAllMedicineButton.visibility = View.VISIBLE
         } else {
-            removeAllMedicineButton.visibility = View.INVISIBLE
+            removeAllMedicineButton.visibility = View.GONE
         }
 
         medicineList.adapter = ArrayAdapter(this, R.layout.activity_medicine_list_item, this.medicines)
@@ -92,7 +100,7 @@ class MedicineListActivity : AppCompatActivity() {
 
         val jsonArrayRequest = JsonArrayRequest(
             Request.Method.GET,
-            "http://192.168.8.90:3000/search_drug?drug_name=" + searchKey,
+            this.serverAddress + "/search_drug?drug_name=" + searchKey,
             null,
             { response ->
                 val jsonArray = JSONTokener(response.toString()).nextValue() as JSONArray
@@ -121,5 +129,4 @@ class MedicineListActivity : AppCompatActivity() {
             addMedicineToList(medicineName)
         }
     }
-
 }
